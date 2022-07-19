@@ -6,13 +6,18 @@ import java.net.http.HttpResponse.BodyHandlers;
 import java.util.List;
 import java.util.Map;
 import java.lang.Math;
+import java.io.FileInputStream;
+import java.util.Properties;
 
 public class App {
     public static void main(String[] args) throws Exception {
 
         //Make a HTTP conection and search for the 250 movies
+        FileInputStream fis = new FileInputStream("/mnt/c/Users/guial/OneDrive/Documents/Alura-Cursos/Imersao-Java/Alura-Stickers/src/resources/config.properties");
+        Properties props = new Properties();
+        props.load(fis);
 
-        String url = "https://api.mocki.io/v2/549a5d8b";
+        String url = props.getProperty("api");
         URI address = URI.create(url); //0- Create a URI instance 
         var client = HttpClient.newHttpClient(); //1- Created the object that will make all process of send requests and retrieve responses
         var request = HttpRequest.newBuilder(address).GET().build(); //2 - This object make all process  to search the data and build the api
@@ -40,7 +45,7 @@ public class App {
             System.out.println();
             long rating = (Math.round(Double.parseDouble(movie.get("imDbRating"))));
             int finalRating = (int)rating;
-            System.out.println("\u001b[1m \u001b[37Jm \u001b[45m Rating:" + emoji.repeat(finalRating) + "\u001b[0m");
+            System.out.println("\u001b[1m \u001b[37m \u001b[45m Rating:" + emoji.repeat(finalRating) + "\u001b[0m");
             
             System.out.println();
             System.out.println("-------------------------------------------------------------------");
