@@ -40,7 +40,7 @@ public class App {
             System.out.println();
             long rating = (Math.round(Double.parseDouble(movie.get("imDbRating"))));
             int finalRating = (int)rating;
-            System.out.println("\u001b[1m \u001b[30m \u001b[45m Rating:" + emoji.repeat(finalRating) + "\u001b[0m");
+            System.out.println("\u001b[1m \u001b[37Jm \u001b[45m Rating:" + emoji.repeat(finalRating) + "\u001b[0m");
             
             System.out.println();
             System.out.println("-------------------------------------------------------------------");
