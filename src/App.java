@@ -8,10 +8,13 @@ import java.util.Map;
 import java.lang.Math;
 import java.io.FileInputStream;
 import java.util.Properties;
+import java.util.Scanner;
 
 public class App {
     public static void main(String[] args) throws Exception {
 
+
+        
         //Make a HTTP conection and search for the 250 movies
         FileInputStream fis = new FileInputStream("/mnt/c/Users/guial/OneDrive/Documents/Alura-Cursos/Imersao-Java/Alura-Stickers/src/resources/config.properties");
         Properties props = new Properties();
@@ -37,18 +40,36 @@ public class App {
         
         //display and manipulate the data
         String emoji = "\uD83C\uDF1F";
+        
         for (Map<String, String> movie : listOfMovies) {
             
             System.out.println("\u001b[1m \u001b[3m \u001b[33m \u001b[41m" + movie.get("title") + "\u001b[0m");
             System.out.println();
             System.out.println("\u001b[1m \u001b[35m \u001b[44m" + movie.get("image") + "\u001b[0m");
             System.out.println();
+            
+
             long rating = (Math.round(Double.parseDouble(movie.get("imDbRating"))));
             int finalRating = (int)rating;
             System.out.println("\u001b[1m \u001b[37m \u001b[45m Rating:" + emoji.repeat(finalRating) + "\u001b[0m");
             
             System.out.println();
             System.out.println("-------------------------------------------------------------------");
+
+         }System.out.println("Users avaliation");
+         int count = 0;
+         for (Map<String, String> movie : listOfMovies){
+            count ++;
+           
+            Scanner myrating = new Scanner(System.in); 
+            System.out.println("\u001b[1m \u001b[3m \u001b[33m \u001b[41m" + movie.get("title") + "\u001b[0m");
+            System.out.println("Movie: " + count + ", How do you classify?");
+    
+            String value = myrating.nextLine(); 
+            long ratingUsers = (Math.round(Double.parseDouble(value)));  
+            int finalRatingUsers = (int)ratingUsers;
+            System.out.println("\u001b[1m \u001b[37m \u001b[45m User Rating:" + emoji.repeat(finalRatingUsers) + "\u001b[0m");
+            
 
          }
     }
