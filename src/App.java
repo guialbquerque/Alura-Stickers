@@ -3,6 +3,8 @@ import java.net.http.HttpClient;
 import java.net.http.HttpRequest;
 import java.net.http.HttpResponse;
 import java.net.http.HttpResponse.BodyHandlers;
+import java.util.List;
+import java.util.Map;
 
 public class App {
     public static void main(String[] args) throws Exception {
@@ -19,10 +21,19 @@ public class App {
         //4- response is a variable that returns an anwser of the request in a string format
         String body = response.body(); //5-The body of my request send
 
-        System.out.println(body); 
+        //System.out.println(body); 
         
         //Extract only the file that interest (title, post, classification)
+
+        var parser = new JsonParser(); //
+        List<Map<String, String>> listOfMovies = parser.parse(body);
         
         //display and manipulate the data
+        for (Map<String, String> movie : listOfMovies) {
+            System.out.println(movie.get("title"));
+            System.out.println(movie.get("image"));
+            System.out.println(movie.get("imDbRating"));
+            System.out.println();
+        }
     }
 }
