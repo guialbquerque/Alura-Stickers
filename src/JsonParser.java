@@ -16,7 +16,7 @@ public class JsonParser {
         Matcher matcher = REGEX_ITEMS.matcher(json);
         if (!matcher.find()) {
 
-            throw new IllegalArgumentException("Não encontrou items.");
+            throw new IllegalArgumentException("Doesnt find anything.");
         }
 
         String[] items = matcher.group(1).split("\\},\\{");

@@ -5,6 +5,7 @@ import java.net.http.HttpResponse;
 import java.net.http.HttpResponse.BodyHandlers;
 import java.util.List;
 import java.util.Map;
+import java.lang.Math;
 
 public class App {
     public static void main(String[] args) throws Exception {
@@ -24,16 +25,26 @@ public class App {
         //System.out.println(body); 
         
         //Extract only the file that interest (title, post, classification)
-
+        
+        
         var parser = new JsonParser(); //
         List<Map<String, String>> listOfMovies = parser.parse(body);
         
         //display and manipulate the data
+        String emoji = "\uD83C\uDF1F";
         for (Map<String, String> movie : listOfMovies) {
-            System.out.println(movie.get("title"));
-            System.out.println(movie.get("image"));
-            System.out.println(movie.get("imDbRating"));
+            
+            System.out.println("\u001b[1m \u001b[3m \u001b[33m \u001b[41m" + movie.get("title") + "\u001b[0m");
             System.out.println();
-        }
+            System.out.println("\u001b[1m \u001b[35m \u001b[44m" + movie.get("image") + "\u001b[0m");
+            System.out.println();
+            long rating = (Math.round(Double.parseDouble(movie.get("imDbRating"))));
+            int finalRating = (int)rating;
+            System.out.println("\u001b[1m \u001b[30m \u001b[45m Rating:" + emoji.repeat(finalRating) + "\u001b[0m");
+            
+            System.out.println();
+            System.out.println("-------------------------------------------------------------------");
+
+         }
     }
 }
