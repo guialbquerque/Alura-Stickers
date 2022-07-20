@@ -35,7 +35,7 @@ public class StickerGenerater {
         //4-Write a phrase in each image
         graphics.drawString("TOPZERA", 200, newHeight - 100);
         //5-Write the new images in a file
-        ImageIO.write(newImage, "png", new File("/mnt/c/Users/guial/OneDrive/Documents/Alura-Cursos/Imersao-Java/Alura-Stickers/output/nameFile.png"));
+        ImageIO.write(newImage, "png", new File("output/"+nameFile));
 
     }
 

@@ -1,4 +1,5 @@
 import java.net.URI;
+import java.net.URL;
 import java.net.http.HttpClient;
 import java.net.http.HttpRequest;
 import java.net.http.HttpResponse;
@@ -7,8 +8,10 @@ import java.util.List;
 import java.util.Map;
 import java.lang.Math;
 import java.io.FileInputStream;
+import java.io.InputStream;
 import java.util.Properties;
 import java.util.Scanner;
+
 
 public class App {
     public static void main(String[] args) throws Exception {
@@ -42,8 +45,16 @@ public class App {
         String emoji = "\uD83C\uDF1F";
         
         for (Map<String, String> movie : listOfMovies) {
-            
-            System.out.println("\u001b[1m \u001b[3m \u001b[33m \u001b[41m" + movie.get("title") + "\u001b[0m");
+
+            String urlImage = movie.get("image");
+            String title = movie.get("title");
+            InputStream inputStream = new URL(urlImage).openStream();    
+            String nameFile = title + ".png";
+            StickerGenerater stickerGenerater = new StickerGenerater();
+            stickerGenerater.create(inputStream, nameFile);
+
+
+            System.out.println("\u001b[1m \u001b[3m \u001b[33m \u001b[41m" + title + "\u001b[0m");
             System.out.println();
             System.out.println("\u001b[1m \u001b[35m \u001b[44m" + movie.get("image") + "\u001b[0m");
             System.out.println();
@@ -61,7 +72,7 @@ public class App {
          for (Map<String, String> movie : listOfMovies){
             count ++;
            
-            Scanner myrating = new Scanner(System.in); 
+            Scanner myrating = new Scanner(System.in);
             System.out.println("\u001b[1m \u001b[3m \u001b[33m \u001b[41m" + movie.get("title") + "\u001b[0m");
             System.out.println("Movie: " + count + ", How do you classify?");
     
