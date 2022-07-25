@@ -32,8 +32,11 @@ public class StickerGenerater {
         Font font = new Font(Font.SANS_SERIF, Font.BOLD, 72);
         graphics.setColor(Color.RED);
         graphics.setFont(font);
+
+        String text = "TOPZERA";
+        int textWidth = graphics.getFontMetrics().stringWidth(text);
         //4-Write a phrase in each image
-        graphics.drawString("TOPZERA", 200, newHeight - 100);
+        graphics.drawString(text, (width - textWidth) / 2, newHeight - 100);
         //5-Write the new images in a file
         ImageIO.write(newImage, "png", new File("output/"+nameFile));
 
