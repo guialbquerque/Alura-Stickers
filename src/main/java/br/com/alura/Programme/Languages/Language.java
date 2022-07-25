@@ -11,6 +11,10 @@ public class Language {
     private String image;
     private int ranking;
 
+    public Language(){
+
+    }
+
     
     public Language(String title, String image, int ranking) {
         this.title = title;
@@ -20,10 +24,6 @@ public class Language {
 
     public String getId() {
         return id;
-    }
-
-    public Language(){
-
     }
 
     public String getTitle() {
