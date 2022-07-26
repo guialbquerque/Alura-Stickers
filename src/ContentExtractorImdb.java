@@ -15,8 +15,8 @@ public class ContentExtractorImdb implements ContentExtractor{
             String title = content.get("title");
             String urlImage = content.get("image");
 
-            var contentsNasa = new Content(urlImage, title);
-            contents.add(contentsNasa);
+            var contentsImdb = new Content(urlImage, title);
+            contents.add(contentsImdb);
         //  }     
     }
         return contents;
