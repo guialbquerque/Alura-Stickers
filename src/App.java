@@ -4,6 +4,7 @@ import java.util.List;
 import java.io.FileInputStream;
 import java.io.InputStream;
 import java.util.Properties;
+import java.util.Scanner;
 
 
 public class App {
@@ -17,26 +18,40 @@ public class App {
         Properties props = new Properties();
         props.load(fis);
         
-        String url = props.getProperty("api");
+        String url = props.getProperty("api5");
         ContentExtractor extractorImdb = new ContentExtractorImdb();
         var http = new ClientHttp();
         String json = http.searchData(url);
+
+        String emoji = "\uD83C\uDF1F";
         
         List<Content> contents = extractorImdb.contentExtract(json);
-
-        var stickerNasa = new StickerGenerater();
-
-        for(int i = 0; i <= 5; i++){
-
+        
+        var stickerImdb = new StickerGenerater();
+        int count = 0;
+        for(int i = 0; i < contents.size(); i++){
+            count ++;
             Content content = contents.get(i);
-
-            InputStream inputStream = new URL(content.getUrlImage()).openStream();
-            String nameFile = content.getTitle() + ".png";
-
-            stickerNasa.create(inputStream, nameFile);
-
-            System.out.println(content.getTitle());
+            String urlImage = content.getUrlImage();
+            String title = content.getTitle();
+            //System.out.println(urlImage);
+            //System.out.println(title);
+            InputStream inputStream = new URL(urlImage).openStream();
+            String nameFile = title + ".png";
+            
+            stickerImdb.create(inputStream, nameFile, title);
+            
             System.out.println();
+            Scanner myrating = new Scanner(System.in);
+            System.out.println("Note Language "+ count + ":");
+            String value = myrating.nextLine();
+            long ratingUsers = (Math.round(Double.parseDouble(value)));
+            int finalRatingUsers = (int)ratingUsers;
+            System.out.println("\u001b[1m \u001b[37m \u001b[45m User Rating:" + emoji.repeat(finalRatingUsers) + "\u001b[0m");
+            System.out.println();
+            System.out.println("\u001b[1m \u001b[35m \u001b[44m" + urlImage + "\u001b[0m");
+            System.out.println();
+
 
         }
 
