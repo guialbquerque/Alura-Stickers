@@ -10,4 +10,4 @@
 | 🚀 URL         | https://mainlanguages.herokuapp.com/languages
 | 🤿 Desafio | https://www.alura.com.br/imersao-java
 
-![ImersaoJava3](https://user-images.githubusercontent.com/67128202/180901509-38bf12da-d92f-426a-abfe-25659a51bf29.png#vitrinedev)
+<image src="https://user-images.githubusercontent.com/67128202/180901509-38bf12da-d92f-426a-abfe-25659a51bf29.png#vitrinedev" width="300"> <image src="https://user-images.githubusercontent.com/67128202/180903112-abd9cf86-d4ad-4c7d-9b8a-1df638910595.png#vitrinedev" width="200">
